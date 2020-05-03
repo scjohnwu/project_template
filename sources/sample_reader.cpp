@@ -1,8 +1,7 @@
 #include "sample_reader.h"
 
 namespace sample {
-SampleReader::SampleReader(std::string connection_string)
-    : m_SQL{make_sqlite3(connection_string)} {}
+SampleReader::SampleReader(SQLite3WrapperPtr wrapper) : m_SQL{wrapper} {}
 
 op_result<std::string> SampleReader::ReadString(std::string key) {
   return std::make_tuple(false, std::string(""));

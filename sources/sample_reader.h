@@ -6,7 +6,7 @@
 namespace sample {
 class SampleReader {
  public:
-  SampleReader(std::string connection_string);
+  SampleReader(SQLite3WrapperPtr wrapper);
 
   SampleReader(const SampleReader&) = delete;
   SampleReader(SampleReader&&) = delete;

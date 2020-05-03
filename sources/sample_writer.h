@@ -13,13 +13,15 @@ struct WriteStatus {
 
 class SampleWriter {
  public:
-  SampleWriter(std::string connection_string);
+  SampleWriter(SQLite3WrapperPtr wrapper);
 
   SampleWriter(const SampleWriter&) = delete;
   SampleWriter(SampleWriter&&) = delete;
 
   SampleWriter& operator=(const SampleWriter&) = delete;
   SampleWriter& operator=(SampleWriter&&) = delete;
+
+  void CreateSchema();
 
   op_result<WriteStatus> WriteString(std::string key, std::string value);
   op_result<WriteStatus> WriteInt64(std::string key, std::int64_t value);

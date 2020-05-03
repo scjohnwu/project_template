@@ -22,7 +22,7 @@ class SQLite3Wrapper {
   void Connect(std::string connection_string);
   std::vector<RespRow> Execute(std::string query);
 
-  friend std::unique_ptr<SQLite3Wrapper> make_sqlite3(
+  friend std::shared_ptr<SQLite3Wrapper> make_sqlite3(
       std::string connection_string);
 
   ~SQLite3Wrapper();
@@ -32,7 +32,7 @@ class SQLite3Wrapper {
 
   sqlite3* m_DB{nullptr};
 };
-using SQLite3WrapperPtr = std::unique_ptr<SQLite3Wrapper>;
+using SQLite3WrapperPtr = std::shared_ptr<SQLite3Wrapper>;
 
 SQLite3WrapperPtr make_sqlite3(std::string connection_string);
 
