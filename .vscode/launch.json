@@ -1,0 +1,37 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "debug_app",
+      "type": "cppvsdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      // In case of need to debug release adjust the suffix
+      "windows": {
+        "program": "${workspaceFolder}/build/bin/Debug/${input:app_name}_x64_debug.exe",
+      },
+      "linux": {
+        "program": "${workspaceFolder}/build/bin/${input:app_name}_x64_debug",
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "app_name",
+      "type": "pickString",
+      "default": "none",
+      "description": "App to debug",
+      // Add your app names here
+      "options": [
+        "sample"
+      ]
+    }
+  ]
+}
