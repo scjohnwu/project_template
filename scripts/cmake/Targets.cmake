@@ -13,7 +13,7 @@ endmacro()
 
 macro(add_apps)
   add_subdirectory(apps)
-  get_directory_property(targets DIRECTORY sources BUILDSYSTEM_TARGETS)
+  get_directory_property(targets DIRECTORY apps BUILDSYSTEM_TARGETS)
   foreach(target IN LISTS targets)
     get_target_property(target_type ${target} TYPE)
     if(${target_type} STREQUAL "EXECUTABLE")
