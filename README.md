@@ -4,5 +4,4 @@
 
 - pytest
 - CPack (library + app deployment)
-- perf
 - doxygen
