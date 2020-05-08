@@ -22,8 +22,7 @@ class SQLite3Wrapper {
   void Connect(std::string connection_string);
   std::vector<RespRow> Execute(std::string query);
 
-  friend std::shared_ptr<SQLite3Wrapper> make_sqlite3(
-      std::string connection_string);
+  friend std::shared_ptr<SQLite3Wrapper> make_sqlite3(std::string connection_string);
 
   ~SQLite3Wrapper();
 

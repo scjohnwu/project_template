@@ -20,6 +20,23 @@
       "linux": {
         "program": "${workspaceFolder}/build/bin/${input:app_name}_x64_debug",
       }
+    },
+    {
+      "name": "debug_tests",
+      "type": "cppvsdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      // In case of need to debug release adjust the suffix
+      "windows": {
+        "program": "${workspaceFolder}/build/bin/Debug/tests.exe",
+      },
+      "linux": {
+        "program": "${workspaceFolder}/build/bin/tests",
+      }
     }
   ],
   "inputs": [

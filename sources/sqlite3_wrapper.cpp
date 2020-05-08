@@ -34,8 +34,7 @@ std::vector<RespRow> SQLite3Wrapper::Execute(std::string query) {
 
     auto count = sqlite3_column_count(statement);
     for (decltype(count) i = 0; i < count; ++i) {
-      auto ch_str =
-          reinterpret_cast<const char*>(sqlite3_column_text(statement, i));
+      auto ch_str = reinterpret_cast<const char*>(sqlite3_column_text(statement, i));
       row.cols.push_back(ch_str);
     }
 

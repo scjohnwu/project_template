@@ -1,7 +1,8 @@
 #pragma once
 
-#include "sqlite3_wrapper.h"
 #include "common_types.h"
+#include "sqlite3_wrapper.h"
+
 
 namespace sample {
 class SampleReader {
