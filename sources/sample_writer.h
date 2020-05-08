@@ -5,10 +5,7 @@
 
 namespace sample {
 struct WriteStatus {
-  bool is_ok{true};
   std::string desc;
-
-  operator bool() const { return is_ok; }
 };
 
 class SampleWriter {
@@ -28,5 +25,7 @@ class SampleWriter {
 
  private:
   SQLite3WrapperPtr m_SQL;
+
+  op_result<WriteStatus> FailStatus(std::vector<RespRow> exec_result);
 };
 }  // namespace sample

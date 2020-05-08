@@ -7,20 +7,27 @@ TEST_CASE("RW_TEST_CASE") {
 
   const std::string open_string = ":memory:";
   const std::string key = "test_key";
-  const std::string value = "test_value";
+  const std::string string_value = "test_value";
+  const std::int64_t integer_value = 0xDEAD;
 
   auto sql_wrapper = make_sqlite3(open_string);
 
   SampleWriter writer{sql_wrapper};
   writer.CreateSchema();
 
-  auto write_result = writer.WriteString(key, value);
+  auto write_result = writer.WriteString(key, string_value);
+  REQUIRE(std::get<op::status>(write_result));
 
-  REQUIRE_FALSE(std::get<op::status>(write_result));
+  write_result = writer.WriteInt64(key, integer_value);
+  REQUIRE(std::get<op::status>(write_result));
 
   SampleReader reader{sql_wrapper};
-  auto read_result = reader.ReadString(key);
+  auto string_result = reader.ReadString(key);
 
-  REQUIRE(std::get<op::status>(read_result));
-  REQUIRE(std::get<op::value>(read_result) == value);
+  REQUIRE(std::get<op::status>(string_result));
+  REQUIRE(std::get<op::value>(string_result) == string_value);
+
+  auto integer_result = reader.ReadInt64(key);
+  REQUIRE(std::get<op::status>(integer_result));
+  REQUIRE(std::get<op::value>(integer_result) == integer_value);
 }
